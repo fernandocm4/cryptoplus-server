@@ -19,8 +19,6 @@ origins_list = [origin.strip() for origin in origins.split(',') if origin.strip(
 CORS(app, origins=origins_list)
 
 
-
-
 def check_database():
     return True
 
@@ -30,10 +28,7 @@ def check_coin_gecko():
     else:
         return False
     
-
-
 flask_status.add_field("database", check_database)
 flask_status.add_field("coinGecko", check_coin_gecko)
 
 config(app)
-app.run(debug=True)

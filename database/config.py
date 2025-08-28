@@ -1,15 +1,17 @@
 from peewee import PostgresqlDatabase
 from dotenv import load_dotenv
 import os
+from urllib.parse import urlparse
 load_dotenv()
 
 
-
+database_url = os.getenv('DATABASE_URL')
+url = urlparse(database_url)
 
 db = PostgresqlDatabase(
-    os.getenv('DATABASE_NAME'),
-    host=os.getenv('DATABASE_URL'),
-    port=os.getenv('DATABASE_PORT'),
-    user=os.getenv('DATABASE_USER'),
-    password=os.getenv('DATABASE_PWD')
+    database=url.path[1:],
+    user=url.username,
+    password=url.password,
+    host=url.hostname,
+    port=url.port
 )

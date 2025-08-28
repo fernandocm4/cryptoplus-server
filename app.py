@@ -12,7 +12,13 @@ load_dotenv()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 flask_status = FlaskStatus(app, url='/status')
-CORS(app, origins=["http://localhost:5173", "http://127.0.0.1:5173"])
+
+origins = os.environ.get('CORS_ORIGINS', '')
+origins_list = [origin.strip() for origin in origins.split(',') if origin.strip()]
+
+CORS(app, origins=origins_list)
+
+
 
 
 def check_database():

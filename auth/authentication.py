@@ -18,7 +18,6 @@ def auth():
     pwd = data['password']
 
     User.create(
-        name = data['name'],
         username = data['username'],
         password = generate_password_hash(pwd, method='pbkdf2:sha256')
     )
@@ -33,7 +32,7 @@ def login():
     try:
         user = User.get(User.username == data['username'])
     except:
-        return jsonify(message="Username não encontrado!"), 404
+        return jsonify(message="Username não encontrado!"), 401
 
     if not data:
         return jsonify(message="Dados de login não fornecidos!"), 400
@@ -58,7 +57,7 @@ def protected():
         return jsonify(message="Token é necessário!"), 403
     
     parts = auth_header.split()
-    if parts[0].lower() != 'baerer' or len(parts) != 2:
+    if parts[0].lower() != 'bearer' or len(parts) != 2:
         return jsonify(message="Cabeçalho de autorização mal formatado!"), 401
     token = parts[1]
 

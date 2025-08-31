@@ -5,7 +5,6 @@ from database.config import db
 
 class User(Model):
     id = UUIDField(null=False, primary_key=True, default=uuid4)
-    name = CharField()
     username = CharField()
     password = CharField()
 

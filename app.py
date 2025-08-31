@@ -32,3 +32,4 @@ flask_status.add_field("database", check_database)
 flask_status.add_field("coinGecko", check_coin_gecko)
 
 config(app)
+app.run(debug=True)

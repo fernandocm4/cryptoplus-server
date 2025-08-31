@@ -46,25 +46,5 @@ def login():
             SECRET_KEY,
             algorithm="HS256"
         )
-        return jsonify(token=token)
+        return jsonify(token=token), 200
     return jsonify(message='Verifique suas credenciais!'), 401
-
-
-@auth_route.route('/protected', methods=["GET"])
-def protected():
-    auth_header = request.headers.get("Authorization")
-    if not auth_header:
-        return jsonify(message="Token é necessário!"), 403
-    
-    parts = auth_header.split()
-    if parts[0].lower() != 'bearer' or len(parts) != 2:
-        return jsonify(message="Cabeçalho de autorização mal formatado!"), 401
-    token = parts[1]
-
-    try:
-        decoded = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
-        return jsonify(message=f"Bem-vindo, {decoded['user']}!")
-    except jwt.ExpiredSignatureError:
-        return jsonify(message="Token expirado! Faça o login novamente."), 401
-    except jwt.InvalidTokenError:
-        return jsonify(message="Token inválido"), 403

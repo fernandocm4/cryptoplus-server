@@ -20,7 +20,7 @@ def authRoute(data):
 
         try:
             jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
-            
+   
         except jwt.ExpiredSignatureError:
             return jsonify(message="Token expirado! Faça o login novamente."), 401
         except jwt.InvalidTokenError:

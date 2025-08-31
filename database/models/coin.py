@@ -4,9 +4,6 @@ from uuid import uuid4
 from database.config import db
 
 
-
-
-
 class Coin(Model):
     id = UUIDField(null=False, primary_key=True, default=uuid4)
     name = CharField()

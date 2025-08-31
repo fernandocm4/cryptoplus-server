@@ -5,7 +5,6 @@ from auth.auth import authRoute
 
 coins_route = Blueprint('coins', __name__)
 
-
 @coins_route.route('/importar', methods=['POST'])
 @authRoute
 def save_api_data():
@@ -21,7 +20,6 @@ def save_api_data():
         )
     return jsonify(message="Success"), 201
         
-
 
 @coins_route.route('/importar')
 @authRoute
@@ -40,11 +38,9 @@ def get_database_api_data():
 
         data.append(coin_object)
     
-    return jsonify(data)
+    return jsonify(data), 200
 
 
-
-    
 @coins_route.route('/indicadores')
 @authRoute
 def get_indicators():
@@ -65,15 +61,12 @@ def get_indicators():
 
         data.append(filtered_item)
     
-    return data
-
-
+    return jsonify(data), 200
 
 
 @coins_route.route('/indicadores/<string:coin_id>')
 @authRoute
 def get_indicators_for_a_coin(coin_id):
-
     
     days = request.args.get('days', 7)
     api_data_prices = api.get_days_prices(coin_id, days)
@@ -121,7 +114,4 @@ def get_indicators_for_a_coin(coin_id):
         }
 
     
-    return filtered_item
-
-    
-    
+    return jsonify(filtered_item), 200

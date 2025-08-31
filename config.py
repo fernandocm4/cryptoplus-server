@@ -1,5 +1,6 @@
 from routes.home import home_route
 from routes.coins import coins_route
+from routes.health.status import status_route
 from auth.authentication import auth_route
 from database.config import db
 from database.models.coin import Coin
@@ -10,12 +11,13 @@ def config_routes(app):
     app.register_blueprint(home_route)
     app.register_blueprint(coins_route)
     app.register_blueprint(auth_route)
-
-def config(app):
-    config_routes(app)
-    configure_db()
+    app.register_blueprint(status_route)
 
 def configure_db():
     db.connect()
     db.create_tables([Coin])
     db.create_tables([User])
+
+def config(app):
+    config_routes(app)
+    configure_db()

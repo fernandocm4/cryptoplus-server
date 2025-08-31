@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify
 from config import config
 from flask_status import FlaskStatus
 import os
@@ -11,24 +11,29 @@ load_dotenv()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-flask_status = FlaskStatus(app, url='/status')
-
 origins = os.environ.get('CORS_ORIGINS', '')
 origins_list = [origin.strip() for origin in origins.split(',') if origin.strip()]
-
 CORS(app, origins=origins_list)
 
-
-def check_database():
-    return True
-
-def check_coin_gecko():
-    if (requests.get(f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&x_cg_demo_api_key={os.getenv('API_KEY')}")):
-        return True
-    else:
-        return False
-    
-flask_status.add_field("database", check_database)
-flask_status.add_field("coinGecko", check_coin_gecko)
-
 config(app)
+
+# flask_status = FlaskStatus(app, url='/status')
+
+# def check_database():
+#     return True
+
+# def check_coin_gecko():
+    
+#     if (requests.get(f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&x_cg_demo_api_key={os.getenv('API_KEY')}")):
+#         return True
+#     else:
+#         return False
+    
+# flask_status.add_field("database", check_database)
+# flask_status.add_field("coinGecko", check_coin_gecko)
+
+
+
+
+
+app.run(debug=True)

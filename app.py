@@ -14,4 +14,3 @@ origins_list = [origin.strip() for origin in origins.split(',') if origin.strip(
 CORS(app, origins=origins_list)
 
 config(app)
-app.run(debug=True)

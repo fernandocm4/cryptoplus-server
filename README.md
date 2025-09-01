@@ -78,7 +78,7 @@ Antes de começar, certifique-se de ter instalado:
 
 ### 1. `GET /`
 
-* **Descrição:** Retorna a lista de 100 das criptomoedas chamadas pela api.
+* **Descrição:** Retorna a lista das criptomoedas chamadas pela api.
 * **Método:** `GET`
 * **URL:** `http://127.0.0.1:5000/`
 * **Parâmetros da requisição:** Nenhum.

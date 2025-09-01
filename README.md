@@ -19,7 +19,7 @@ Antes de começar, certifique-se de ter instalado:
 
 1.  **Clone o repositório:**
     ```bash
-    git clone git@github.com:fernandocm4/cryptoplus-server.git
+    git clone https://github.com/fernandocm4/cryptoplus-server.git
     cd cryptoplus-server
     git checkout dev
     ```

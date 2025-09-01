@@ -76,8 +76,6 @@ Antes de começar, certifique-se de ter instalado:
 
 ## Endpoints da API
 
-Esta seção é crucial. Descreva cada endpoint de forma clara, incluindo o método HTTP, a URL, a descrição, os parâmetros da requisição e a estrutura da resposta.
-
 ### 1. `GET /`
 
 * **Descrição:** Retorna a lista de 100 das criptomoedas chamadas pela api.

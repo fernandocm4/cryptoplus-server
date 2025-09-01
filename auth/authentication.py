@@ -32,7 +32,7 @@ def login():
     try:
         user = User.get(User.username == data['username'])
     except:
-        return jsonify(message="Username não encontrado!"), 401
+        return jsonify(message="Verifique suas credenciais!"), 401
 
     if not data:
         return jsonify(message="Dados de login não fornecidos!"), 400

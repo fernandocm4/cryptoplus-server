@@ -1,8 +1,6 @@
 from flask import Flask, jsonify
 from config import config
-from flask_status import FlaskStatus
 import os
-import requests
 from database.config import db
 from flask_cors import CORS
 from dotenv import load_dotenv

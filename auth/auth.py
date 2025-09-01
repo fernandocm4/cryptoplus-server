@@ -1,6 +1,6 @@
 from flask import request,jsonify
 from functools import wraps
-import api, jwt, os
+import jwt, os
 from dotenv import load_dotenv
 
 load_dotenv()

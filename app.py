@@ -16,24 +16,4 @@ origins_list = [origin.strip() for origin in origins.split(',') if origin.strip(
 CORS(app, origins=origins_list)
 
 config(app)
-
-# flask_status = FlaskStatus(app, url='/status')
-
-# def check_database():
-#     return True
-
-# def check_coin_gecko():
-    
-#     if (requests.get(f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&x_cg_demo_api_key={os.getenv('API_KEY')}")):
-#         return True
-#     else:
-#         return False
-    
-# flask_status.add_field("database", check_database)
-# flask_status.add_field("coinGecko", check_coin_gecko)
-
-
-
-
-
 app.run(debug=True)
